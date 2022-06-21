@@ -26,7 +26,7 @@ set foldmethod=marker
 let map_leader = " "
 " }}}
 
-" {{{,##Vim Plugins
+" {{{,##Vim Plugins 
 call plug#begin('~/.config/nvim/plugged')
     " LSP Plugins
     Plug 'neovim/nvim-lspconfig'
@@ -53,14 +53,15 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 colorscheme gruvbox
-" )))
+" }))
 
-" {{{,## LSP
+" {{{,## LSP 
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 " }}}
 
-" {{{,##GIT
+" {{{,##GIT 
 nnoremap <leader>ga :Git fetch --all<CR>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 " }}}
+
