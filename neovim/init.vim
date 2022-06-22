@@ -26,42 +26,41 @@ set foldmethod=marker
 let map_leader = " "
 " }}}
 
+
 " {{{,##Vim Plugins 
 call plug#begin('~/.config/nvim/plugged')
-    " LSP Plugins
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-    Plug 'onsails/lspkind-nvim'
-    Plug 'nvim-lua/lsp_extensions.nvim'
-    
-    " For some pretty colors
-    Plug 'gruvbox-community/gruvbox'
-
-    " Need Treesitter for telescope
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/playground'
-    Plug 'romgrk/nvim-treesitter-context'
-
-    " Telescopes
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-telescope/telescope-fzy-native.nvim'
+    Plug 'dracula/vim'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'kevinoid/vim-jsonc'
+    Plug 'scrooloose/nerdtree'
+    Plug 'preservim/nerdcommenter'
+    Plug 'mhinz/vim-startify'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-colorscheme gruvbox
 " }))
 
-" {{{,## LSP 
-set completeopt=menuone,noinsert,noselect
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-" }}}
 
-" {{{,##GIT 
-nnoremap <leader>ga :Git fetch --all<CR>
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-" }}}
+" {{{,##Customizations
+" Colors
+if (has("termguicolors"))
+    set termguicolors
+endif
+syntax enable
+colorscheme dracula
 
+" coc settings and snippets
+
+" tmux settings
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
+" ###Customizations}}}
