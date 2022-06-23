@@ -29,7 +29,7 @@ let map_leader = ","
 
 
 " {{{,##Vim Plugins 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'aserowy/tmux.nvim'
     Plug 'dracula/vim'
     Plug 'ryanoasis/vim-devicons'
