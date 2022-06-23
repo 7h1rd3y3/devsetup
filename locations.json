@@ -1,0 +1,16 @@
+{ 
+    "fish": [  
+        {"config.fish": "$HOME/.config/fish/config.fish"} 
+    ], 
+    "kitty": [ 
+        {"background.png": "$HOME/.config/kitty/background.png"}, 
+        {"kitty.conf": "$HOME/.config/kitty/kitty.conf"}, 
+        {"background.png": "$HOME/.config/kitty/background.png"} 
+    ],
+    "neovim": [
+        {"init.vim": "$HOME/.config/neovim/init.vim"}
+    ],
+    "tmux": [
+        {"tmux.conf": "$HOME/.tmux.conf"}
+    ]
+}
