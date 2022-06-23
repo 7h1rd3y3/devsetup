@@ -30,6 +30,7 @@ let map_leader = ","
 
 " {{{,##Vim Plugins 
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'aserowy/tmux.nvim'
     Plug 'dracula/vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'christoomey/vim-tmux-navigator'
@@ -45,6 +46,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
     Plug 'mhinz/vim-startify'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'fladson/vim-kitty'
 call plug#end()
 
 " }))
@@ -64,8 +66,12 @@ let g:coc_global_extensions = [
             \ 'coc-pairs',
             \ 'coc-prettier',
             \ 'coc-json',
-            \ 'coc-rust-analyzer',
+            \ 'coc-rls',
             \ 'coc-clangd',
+            \ 'coc-sh',
+            \ 'coc-go',
+            \ 'coc-omnisharp',
+            \ 'coc-python',
             \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
