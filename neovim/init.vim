@@ -41,12 +41,29 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'preservim/nerdcommenter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'tpope/vim-fugitive'
     Plug 'ryanoasis/vim-devicons'
     Plug 'airblade/vim-gitgutter'
     Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
     Plug 'mhinz/vim-startify'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'fladson/vim-kitty'
+
+    " coc settings and snippets
+    let g:coc_global_extensions = [
+                \ 'coc-snippets',
+                \ 'coc-pairs',
+                \ 'coc-prettier',
+                \ 'coc-json',
+                \ 'coc-docker',
+                \ 'coc-rls',
+                \ 'coc-clangd',
+                \ 'coc-sh',
+                \ 'coc-go',
+                \ 'coc-omnisharp',
+                \ 'coc-python',
+                \ ]
+
 call plug#end()
 
 " }))
@@ -60,20 +77,6 @@ endif
 syntax enable
 colorscheme dracula
 
-" coc settings and snippets
-let g:coc_global_extensions = [
-            \ 'coc-snippets',
-            \ 'coc-pairs',
-            \ 'coc-prettier',
-            \ 'coc-json',
-            \ 'coc-docker',
-            \ 'coc-rls',
-            \ 'coc-clangd',
-            \ 'coc-sh',
-            \ 'coc-go',
-            \ 'coc-omnisharp',
-            \ 'coc-python',
-            \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -158,4 +161,5 @@ endfunction
 
 " Highlight currently open buffer in NERDTree
 autocmd BufEnter * call SyncTree()
+
 " ###Customizations}}}
