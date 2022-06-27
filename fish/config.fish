@@ -1,3 +1,5 @@
+#! /usr/bin/fish
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -21,7 +23,13 @@ end
 
 op completion fish | source
 
-function load_sloth_secrets
-    set -g PAT_USERNAME (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "username") | .value') 
-    set -g PAT_VALUE (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') 
+
+function g_push -d "Change the remote URL. Push changes to repo. Change url back"
+    set -fx PAT (string replace -a '"' '' \
+        (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') \
+    )
+
+    set -fx encoded (printf "%s"":$PAT" | base64)
+    set -fx branch_name (git branch --show-current)
+    git -c http.ExtraHeader="Authorization: Basic $encoded" push origin $branch_name 
 end

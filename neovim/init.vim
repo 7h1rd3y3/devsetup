@@ -53,6 +53,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     let g:coc_global_extensions = [
                 \ 'coc-snippets',
                 \ 'coc-pairs',
+                \ 'coc-fish',
                 \ 'coc-prettier',
                 \ 'coc-json',
                 \ 'coc-docker',
@@ -62,6 +63,9 @@ call plug#begin('$HOME/.config/nvim/plugged')
                 \ 'coc-go',
                 \ 'coc-omnisharp',
                 \ 'coc-python',
+                \ 'coc-markdown-preview-enhanced',
+                \ 'coc-webview',
+                \ 'coc-markdownlint',
                 \ ]
 
 call plug#end()
