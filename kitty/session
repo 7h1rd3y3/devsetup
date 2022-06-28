@@ -1,2 +1,5 @@
+enabled_layouts tall, stack
 layout tall
+launch --title "Devtime all the time"
 cd $HOME/repos/
+

@@ -1,6 +1,6 @@
 start_directory: "$PWD"
 shell_command_before: echo "Starting new dev session at $PWD"
-session_name: dev-$USER-${PWD*##/}
+session_name: dev-$USER
 
 windows:
   - window_name: ide
@@ -8,4 +8,4 @@ windows:
     panes:
       - nvim .
       - nvim .
-      - 
+      - fish . 
