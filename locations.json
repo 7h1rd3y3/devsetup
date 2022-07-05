@@ -12,5 +12,9 @@
     ],
     "tmux": [
         {"tmux.conf": "$HOME/.tmux.conf"}
-    ]
+    ],
+    "node",
+    "tree",
+    {"python" : "pynvim - pip install neovim"},
+    "vim-plugged"
 }
