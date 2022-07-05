@@ -7,6 +7,11 @@ end
 alias cdr='cd $HOME/repos'
 alias ll='ls -lah $argv'
 
+#if the editor is not resetting you may need to add:
+#   Defaults    env_keep += "EDITOR VISUAL" to the sudoers file(sudo visudo)
+set -Ux EDITOR /usr/bin/nvim
+set -Ux VISUAL /usr/bin/nvim
+
 function check_link_print -d "Check if a symlink exists and that it points at something"
     if test -L $argv
         if test -e $argv
@@ -23,6 +28,15 @@ end
 
 op completion fish | source
 
+function g_clone -d "Use 1pass creds to clone repo from sloth-ninja"
+    set -fx PAT (string replace -a '"' '' \
+        (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') \
+    )
+
+    set -fx encoded (printf "%s"":$PAT" | base64)
+    set -fx branch_name (git branch --show-current)
+    git -c http.ExtraHeader="Authorization: Basic $encoded" clone $argv 
+end
 
 function g_push -d "Change the remote URL. Push changes to repo. Change url back"
     set -fx PAT (string replace -a '"' '' \
@@ -45,11 +59,11 @@ function sshagent_testsocket
     end
 
     if [ X"$argv[1]" != X ] ;
-    	set -xg SSH_AUTH_SOCK $argv[1]
+	set -xg SSH_AUTH_SOCK $argv[1]
     end
 
     if [ X"$SSH_AUTH_SOCK" = X ]
-    	return 2
+	return 2
     end
 
     if [ -S $SSH_AUTH_SOCK ] ;
@@ -110,5 +124,5 @@ ssh_agent_init
 function newdevsession -d "Create a new tmux session with parent directory as the session name"
     set -fx SESSIONNAME (string split -r -m1 -f2 '/' $PWD)
     echo "Entering: $SESSIONNAME"
-    tmux new -s $SESSIONNAME || tmux att $SESSIONNAME
+    tmux new -s $SESSIONNAME || tmux att -t $SESSIONNAME
 end
