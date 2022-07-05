@@ -21,18 +21,18 @@ function check_link_print -d "Check if a symlink exists and that it points at so
     end
 end
 
-#op completion fish | source
-#
-#
-#function g_push -d "Change the remote URL. Push changes to repo. Change url back"
-#    set -fx PAT (string replace -a '"' '' \
-#        (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') \
-#    )
-#
-#    set -fx encoded (printf "%s"":$PAT" | base64)
-#    set -fx branch_name (git branch --show-current)
-#    git -c http.ExtraHeader="Authorization: Basic $encoded" push origin $branch_name 
-#end
+op completion fish | source
+
+
+function g_push -d "Change the remote URL. Push changes to repo. Change url back"
+    set -fx PAT (string replace -a '"' '' \
+        (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') \
+    )
+
+    set -fx encoded (printf "%s"":$PAT" | base64)
+    set -fx branch_name (git branch --show-current)
+    git -c http.ExtraHeader="Authorization: Basic $encoded" push origin $branch_name 
+end
 
 function sshagent_findsockets
 	find /tmp -uid (id -u) -type s -name agent.\* 2>/dev/null
@@ -106,3 +106,9 @@ function ssh_agent_init
 end
 
 ssh_agent_init
+
+function newdevsession -d "Create a new tmux session with parent directory as the session name"
+    set -fx SESSIONNAME (string split -r -m1 -f2 '/' $PWD)
+    echo "Entering: $SESSIONNAME"
+    tmux new -s $SESSIONNAME || tmux att $SESSIONNAME
+end
