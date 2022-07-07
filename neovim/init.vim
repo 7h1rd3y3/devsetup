@@ -22,7 +22,7 @@ set hidden
 set incsearch
 set termguicolors
 set noshowmode
-set colorcolumn=100
+set colorcolumn=80
 set signcolumn
 set cmdheight=2
 set updatetime=50
@@ -32,7 +32,7 @@ set shortmess+=c
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
-let map_leader = ","
+let mapleader = ","
 " }}}
 
 
@@ -66,7 +66,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
                 \ 'coc-sh',
                 \ 'coc-go',
                 \ 'coc-omnisharp',
-                \ 'coc-python',
+                \ 'coc-pyright',
                 \ 'coc-markdown-preview-enhanced',
                 \ 'coc-webview',
                 \ 'coc-markdownlint',
@@ -263,4 +263,5 @@ endfunction
 
 " Highlight currently open buffer in NERDTree
 autocmd BufEnter * call SyncTree()
+
 

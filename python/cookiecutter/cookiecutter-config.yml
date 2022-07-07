@@ -1,0 +1,7 @@
+default_context:
+    full_name: "Tim Wakeman"
+    email: "timothy.wakeman@sony.com"
+    github_username: "thirdeye@gitlab.sloth-ninja.team"
+cookiecutters_dir: "/home/thirdeye/repos/"
+abbreviations:
+    gh: https://gitlab.sloth-ninja.team/{0}.git
