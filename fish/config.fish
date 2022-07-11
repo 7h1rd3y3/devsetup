@@ -1,6 +1,21 @@
 #! /usr/bin/fish
 
 if status is-interactive
+    function read_confirm
+        if $argv
+            echo "Continuing automatically"
+        end
+        while true
+            read -l -P 'Do you want to continue? [y/N] ' confirm
+
+            switch $confirm
+                case Y y
+                    return 0
+                case '' N n
+                    return 1
+            end
+        end
+    end
     # Commands to run in interactive sessions can go here
     function sshagent_findsockets
         find /tmp -uid (id -u) -type s -name agent.\* 2>/dev/null
