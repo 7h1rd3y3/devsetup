@@ -44,12 +44,14 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'SirVer/ultisnips'
     Plug 'kevinoid/vim-jsonc'
-    Plug 'scrooloose/nerdtree'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    "Plug 'scrooloose/nerdtree'
     Plug 'preservim/nerdcommenter'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    "Plug 'Xuyuanp/nerdtree-git-plugin'
+    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'tpope/vim-fugitive'
-    Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
+    "Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
     Plug 'mhinz/vim-startify'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'fladson/vim-kitty'
@@ -243,25 +245,32 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 " Nerdtree
-inoremap jk <ESC>
-nmap <C-n> :NERDTreeToggle<CR>
+"inoremap jk <ESC>
+"nmap <C-n> :NERDTreeToggle<CR>
+"vmap <C-k><C-c> <plug>NERDCommenterToggle
+"nmap <C-k><C-c> <plug>NERDCommenterToggle
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 " " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
+"function! IsNERDTreeOpen()        
+  "return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+"endfunction
 
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
+"" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+"" file, and we're not in vimdiff
+"function! SyncTree()
+  "if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    "NERDTreeFind
+    "wincmd p
+  "endif
+"endfunction
 
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
+"" Highlight currently open buffer in NERDTree
+"autocmd BufEnter * call SyncTree()
 
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 

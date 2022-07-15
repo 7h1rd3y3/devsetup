@@ -113,7 +113,11 @@ function check_link_print -d "Check if a symlink exists and that it points at so
     end
 end
 
-op completion fish | source
+if command -sq op
+    op completion fish | source
+else
+    echo "One Pass utiility not found. Completion for fish not loaded"
+end
 
 function g_clone -d "Use 1pass creds to clone repo from sloth-ninja"
     set -fx PAT (string replace -a '"' '' \
