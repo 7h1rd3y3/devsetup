@@ -44,17 +44,16 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'SirVer/ultisnips'
     Plug 'kevinoid/vim-jsonc'
+    Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    "Plug 'scrooloose/nerdtree'
     Plug 'preservim/nerdcommenter'
-    "Plug 'Xuyuanp/nerdtree-git-plugin'
-    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'tpope/vim-fugitive'
-    "Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
     Plug 'mhinz/vim-startify'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'fladson/vim-kitty'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
     " coc settings and snippets
     let g:coc_global_extensions = [
@@ -62,6 +61,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
                 \ 'coc-fish',
                 \ 'coc-prettier',
                 \ 'coc-json',
+                \ 'coc-git',
                 \ 'coc-docker',
                 \ 'coc-rls',
                 \ 'coc-clangd',
@@ -274,3 +274,33 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+nnoremap <leader>vs <cmd>vs<cr>
+
+
+" Airline!!!
+let g:airline_section_a = airline#section#create(['mode',' ','branch'])
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.colnr = ' ㏇:'
+let g:airline_symbols.colnr = ' ℅:'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = ' ␊:'
+let g:airline_symbols.linenr = ' ␤:'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
