@@ -1,2 +1,7 @@
 # git rid of stupid kitty bak files
 kitty.conf.bak
+
+# node local install
+node_modules/
+package.json
+package-lock.json

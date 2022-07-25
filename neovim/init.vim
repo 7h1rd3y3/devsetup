@@ -247,10 +247,10 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " Nerdtree
 "inoremap jk <ESC>
 "nmap <C-n> :NERDTreeToggle<CR>
-"vmap <C-k><C-c> <plug>NERDCommenterToggle
-"nmap <C-k><C-c> <plug>NERDCommenterToggle
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
+vmap <C-k>c <plug>NERDCommenterToggle
+nmap <C-k>c <plug>NERDCommenterToggle
+"vmap ++ <plug>NERDCommenterToggle
+"nmap ++ <plug>NERDCommenterToggle
 " " Check if NERDTree is open or active
 "function! IsNERDTreeOpen()        
   "return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
