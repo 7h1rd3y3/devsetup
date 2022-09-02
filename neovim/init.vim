@@ -54,6 +54,8 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'fladson/vim-kitty'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'sbdchd/neoformat'
+
 
     " coc settings and snippets
     let g:coc_global_extensions = [
