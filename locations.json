@@ -1,20 +1,28 @@
 { 
-    "fish": [  
-        {"config.fish": "$HOME/.config/fish/config.fish"} 
-    ], 
-    "kitty": [ 
-        {"background.png": "$HOME/.config/kitty/background.png"}, 
-        {"kitty.conf": "$HOME/.config/kitty/kitty.conf"}, 
-        {"background.png": "$HOME/.config/kitty/background.png"} 
-    ],
-    "neovim": [
-        {"init.vim": "$HOME/.config/neovim/init.vim"}
-    ],
-    "tmux": [
-        {"tmux.conf": "$HOME/.tmux.conf"}
-    ],
-    "node",
-    "tree",
-    {"python" : "pynvim - pip install neovim"},
-    "vim-plugged"
+	"Configurations": {
+    "fish": {  
+        "config.fish": "~/.config/fish/config.fish" 
+    }, 
+    "kitty": { 
+        "background.png": "~/.config/kitty/background.png", 
+        "kitty.conf": "~/.config/kitty/kitty.conf", 
+        "background.png": "~/.config/kitty/background.png" 
+    },
+    "neovim": {
+        "init.vim": "~/.config/neovim/init.vim"
+    },
+    "tmux": {
+        "tmux.conf": "~/.tmux.conf"
+    }
+	},
+	"installations": {
+    "node": "sudo dnf module install -y nodejs:16",
+    "neovim(npm)": "npm install neovim",
+    "epel": "sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm",
+    "neovim(dnf)": "sudo yum install -y neovim python3-neovim",
+    "ripgrep(mirror)": "sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo",
+    "ripgrep(package)": "sudo yum install ripgrep",
+    "pynvim,neovim": "sudo -H python -m pip install neovim pynvim",
+    "vim-plugged": "sh -c 'curl -fLo \"${XDG_DATA_HOME:-$HOME/.local/share}\"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'"
+	}
 }

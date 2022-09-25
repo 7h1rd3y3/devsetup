@@ -92,7 +92,6 @@ if status is-interactive
 end
 
 alias cdr='cd $HOME/repos'
-alias ll='ls -lah $argv'
 
 #if the editor is not resetting you may need to add:
 #   Defaults    env_keep += "EDITOR VISUAL" to the sudoers file(sudo visudo)
