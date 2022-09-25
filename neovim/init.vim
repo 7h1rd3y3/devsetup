@@ -56,6 +56,8 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'fatih/vim-go'
     Plug 'vim-scripts/SQLComplete.vim'
+    Plug 'sbdchd/neoformat'
+
 
     " coc settings and snippets
     let g:coc_global_extensions = [
