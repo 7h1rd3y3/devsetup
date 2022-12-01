@@ -42,7 +42,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'dracula/vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'christoomey/vim-tmux-navigator'
-    Plug 'SirVer/ultisnips'
+    "Plug 'SirVer/ultisnips'
     Plug 'kevinoid/vim-jsonc'
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'nvim-lua/plenary.nvim'
@@ -50,6 +50,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'preservim/nerdcommenter'
     Plug 'tpope/vim-fugitive'
     Plug 'mhinz/vim-startify'
+    Plug 'rust-lang/rust.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'fladson/vim-kitty'
     Plug 'vim-airline/vim-airline'
@@ -67,13 +68,15 @@ call plug#begin('$HOME/.config/nvim/plugged')
                 \ 'coc-json',
                 \ 'coc-git',
                 \ 'coc-docker',
-                \ 'coc-rls',
+                \ 'coc-cmake',
+                "\ 'coc-rls',
                 \ 'coc-clangd',
                 \ 'coc-sh',
                 \ 'coc-go',
                 \ 'coc-omnisharp',
                 \ 'coc-pyright',
                 \ 'coc-markdown-preview-enhanced',
+                \ 'coc-rust-analyzer',
                 \ 'coc-webview',
                 \ 'coc-markdownlint',
                 \ ]
@@ -300,3 +303,10 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
+
+
+" Rust-Analyzer
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
