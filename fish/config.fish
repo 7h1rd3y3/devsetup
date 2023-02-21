@@ -88,6 +88,21 @@ if status is-interactive
         # ssh-add -l
     end
 
+    function check_path_for_cargo -d "Check that cargo is in Path and add if not"
+        if test -d "$HOME/.cargo/bin"
+            if string match -q "$HOME/.cargo/bin" $PATH
+                echo "Cargo found and ready"
+            else
+                echo "cargo not found. adding"
+                fish_add_path "$HOME/.cargo/bin"
+            end
+        else
+            echo "No cargo. womp womp!"
+        end
+    end
+
+    check_path_for_cargo
+
     ssh_agent_init
 end
 
@@ -112,35 +127,35 @@ function check_link_print -d "Check if a symlink exists and that it points at so
     end
 end
 
-if command -sq op
-    op completion fish | source
-else
-    echo "One Pass utiility not found. Completion for fish not loaded"
-end
-
-function g_clone -d "Use 1pass creds to clone repo from sloth-ninja"
-    set -fx PAT (string replace -a '"' '' \
-        (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') \
-    )
-
-    set -fx encoded (printf "%s"":$PAT" | base64)
-    set -fx branch_name (git branch --show-current)
-    git -c http.ExtraHeader="Authorization: Basic $encoded" clone $argv 
-end
-
-function g_push -d "Change the remote URL. Push changes to repo. Change url back"
-    set -fx PAT (string replace -a '"' '' \
-        (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') \
-    )
-
-    set -fx encoded (printf "%s"":$PAT" | base64)
-    set -fx branch_name (git branch --show-current)
-    git -c http.ExtraHeader="Authorization: Basic $encoded" push origin $branch_name 
-end
+#if command -sq op
+#    op completion fish | source
+#else
+#    echo "One Pass utiility not found. Completion for fish not loaded"
+#end
+#
+#function g_clone -d "Use 1pass creds to clone repo from sloth-ninja"
+#    set -lx PAT (string replace -a '"' '' \*/
+#        (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') \*/
+#    )
+#
+#    set -lx encoded (printf "%s"":$PAT" | base64)
+#    set -lx branch_name (git branch --show-current)
+#    git -c http.ExtraHeader="Authorization: Basic $encoded" clone $argv 
+#end
+#
+#function g_push -d "Change the remote URL. Push changes to repo. Change url back"
+#    set -lx PAT (string replace -a '"' '' \*/
+#        (op item get Sloth-PAT --format=json | jq '.fields[] | select(.label == "password") | .value') \*/
+#    )
+#
+#    set -lx encoded (printf "%s"":$PAT" | base64)
+#    set -lx branch_name (git branch --show-current)
+#    git -c http.ExtraHeader="Authorization: Basic $encoded" push origin $branch_name 
+#end
 
 
 function newdevsession -d "Create a new tmux session with parent directory as the session name"
-    set -fx SESSIONNAME (string split -r -m1 -f2 '/' $PWD)
+    set -lx SESSIONNAME (string split -r -m1 -f2 '/' $PWD)
     echo "Entering: $SESSIONNAME"
     tmux new -s $SESSIONNAME || tmux att -t $SESSIONNAME
 end

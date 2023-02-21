@@ -1,4 +1,4 @@
-" {{{,##Vim Options 
+" {{{,##Vim Options
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -36,7 +36,7 @@ let mapleader = ","
 " }}}
 
 
-" {{{,##Vim Plugins 
+" {{{,##Vim Plugins
 call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'aserowy/tmux.nvim'
     Plug 'dracula/vim'
@@ -114,15 +114,14 @@ else
     inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-"Use <CR> to confirm completion, use: 
+"Use <CR> to confirm completion, use:
 
 inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
 "To make <CR> to confirm selection of selected complete item or notify coc.nvim
-"to format on enter, use: 
+"to format on enter, use:
 
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
-				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -251,8 +250,8 @@ nmap <C-k>c <plug>NERDCommenterToggle
 "vmap ++ <plug>NERDCommenterToggle
 "nmap ++ <plug>NERDCommenterToggle
 " " Check if NERDTree is open or active
-"function! IsNERDTreeOpen()        
-  "return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+"function! IsNERDTreeOpen()
+ "return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 "endfunction
 
 "" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
